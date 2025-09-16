@@ -1,0 +1,31 @@
+[Unit]
+Description=Zombie Host Detector API
+Documentation=https://naudit.es
+After=network.target
+Wants=network.target
+
+[Service]
+Type=exec
+User=zombie-detector
+Group=zombie-detector
+EnvironmentFile=-/etc/default/zombie-detector
+WorkingDirectory=/var/lib/zombie-detector
+ExecStart=/usr/bin/uvicorn zombie_detector.api.rest:app --host 0.0.0.0 --port 8000 --workers 1
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=zombie-detector
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log/zombie-detector /var/lib/zombie-detector
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,19 @@
+# Environment variables for zombie-detector service
+
+# API Configuration
+ZOMBIE_DETECTOR_HOST=0.0.0.0
+ZOMBIE_DETECTOR_PORT=8000
+ZOMBIE_DETECTOR_WORKERS=1
+
+# Logging
+ZOMBIE_DETECTOR_LOG_LEVEL=info
+ZOMBIE_DETECTOR_LOG_FILE=/var/log/zombie-detector/zombie-detector.log
+
+# Configuration file path
+ZOMBIE_DETECTOR_CONFIG=/etc/zombie-detector/zombie-detector.ini
+
+# States configuration
+ZOMBIE_DETECTOR_STATES=/etc/zombie-detector/states.json
+
+# Data directory
+ZOMBIE_DETECTOR_DATA_DIR=/var/lib/zombie-detector
