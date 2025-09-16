@@ -1,0 +1,794 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zombie Tracking &mdash; Zombie Detector 0.1.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=226ce854" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=a58bc63e"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Zombie Classification" href="classification.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Zombie Detector
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-methods">Installation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#from-source">From Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#from-package-rpm-deb">From Package (RPM/DEB)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#development-installation">Development Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#post-installation-setup">Post-Installation Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verification">Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#installation">1. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#basic-cli-usage">2. Basic CLI Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#start-the-api-server">3. Start the API Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#test-the-api">4. Test the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#view-documentation">5. View Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#example-data-format">Example Data Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-files">Configuration Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#main-configuration">Main Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-sections">Configuration Sections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#api-section">API Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#detection-section">Detection Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#kafka-section">Kafka Section</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#basic-configuration">Basic Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#producer-configuration">Producer Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#security-configuration">Security Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#tracking-section">Tracking Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#logging-section">Logging Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#states-configuration">States Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#environment-variables">Environment Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#service-configuration">Service Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#data-processing">Data Processing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-priority">Configuration Priority</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#detection-criteria-configuration">Detection Criteria Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#single-criteria-1a-1e">Single Criteria (1A-1E)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#double-criteria-2a-2j">Double Criteria (2A-2J)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#environment-specific-configurations-examples">Environment-Specific Configurations Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#development-configuration">Development Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#production-configuration">Production Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-templates">Configuration Templates</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/index.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/index.html#detection-criteria">Detection Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/index.html#classification-system">Classification System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/index.html#states-configuration">States Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">Zombie Classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classification.html#complete-zombie-type-reference">Complete Zombie Type Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classification.html#single-criteria-zombies-1a-1e">Single Criteria Zombies (1A-1E)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classification.html#double-criteria-zombies-2a-2j">Double Criteria Zombies (2A-2J)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classification.html#triple-criteria-zombies-3a-3j">Triple Criteria Zombies (3A-3J)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classification.html#quad-criteria-zombies-4a-4e">Quad Criteria Zombies (4A-4E)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classification.html#ultimate-zombie-5">Ultimate Zombie (5)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html#classification-logic">Classification Logic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classification.html#code-generation-rules">Code Generation Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html#usage-in-detection">Usage in Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html#api-integration">API Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Zombie Tracking</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-tracking-works">How Tracking Works</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#detection-flow">Detection Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-files">Data Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-tracking-system">Using the Tracking System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cli-commands">CLI Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-endpoints">API Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-structures">Data Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#current-zombies">Current Zombies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie-history">Zombie History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#killed-zombies">Killed Zombies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-management">Data Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#analysis-workflow">Analysis Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-issues">Common Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#basic-examples">Basic Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#cli-usage">CLI Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#api-usage">API Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#real-world-scenarios">Real-World Scenarios</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#daily-monitoring">Daily Monitoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#emergency-investigation">Emergency Investigation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#python-integration">Python Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#configuration-examples">Configuration Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#states-configuration">States Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#service-configuration">Service Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#monitoring-examples">Monitoring Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#health-check-script">Health Check Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#performance-monitoring">Performance Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#troubleshooting-examples">Troubleshooting Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#debug-high-memory-usage">Debug High Memory Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#debug-api-issues">Debug API Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#automation-scripts">Automation Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#weekly-report-generation">Weekly Report Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#batch-processing">Batch Processing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html">REST API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData"><code class="docutils literal notranslate"><span class="pre">HostData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.dynatrace_host_id"><code class="docutils literal notranslate"><span class="pre">HostData.dynatrace_host_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.hostname"><code class="docutils literal notranslate"><span class="pre">HostData.hostname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Recent_CPU_decrease_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_CPU_decrease_criterion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Recent_net_traffic_decrease_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_net_traffic_decrease_criterion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Sustained_Low_CPU_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Sustained_Low_CPU_criterion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Excessively_constant_RAM_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Excessively_constant_RAM_criterion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Daily_CPU_profile_lost_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Daily_CPU_profile_lost_criterion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.report_date"><code class="docutils literal notranslate"><span class="pre">HostData.report_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.tenant"><code class="docutils literal notranslate"><span class="pre">HostData.tenant</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.asset_tag"><code class="docutils literal notranslate"><span class="pre">HostData.asset_tag</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.pending_decommission"><code class="docutils literal notranslate"><span class="pre">HostData.pending_decommission</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Recent_CPU_decrease_value"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_CPU_decrease_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Recent_net_traffic_decrease_value"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_net_traffic_decrease_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Sustained_Low_CPU_value"><code class="docutils literal notranslate"><span class="pre">HostData.Sustained_Low_CPU_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Excessively_constant_RAM_value"><code class="docutils literal notranslate"><span class="pre">HostData.Excessively_constant_RAM_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Daily_CPU_profile_lost_value"><code class="docutils literal notranslate"><span class="pre">HostData.Daily_CPU_profile_lost_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.model_config"><code class="docutils literal notranslate"><span class="pre">HostData.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionOptions"><code class="docutils literal notranslate"><span class="pre">DetectionOptions</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionOptions.zombies_only"><code class="docutils literal notranslate"><span class="pre">DetectionOptions.zombies_only</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionOptions.include_summary"><code class="docutils literal notranslate"><span class="pre">DetectionOptions.include_summary</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionOptions.model_config"><code class="docutils literal notranslate"><span class="pre">DetectionOptions.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionRequest"><code class="docutils literal notranslate"><span class="pre">DetectionRequest</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionRequest.hosts"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.hosts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionRequest.states"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.states</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionRequest.options"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.options</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionRequest.model_config"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionResponse"><code class="docutils literal notranslate"><span class="pre">DetectionResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionResponse.status"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionResponse.results"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.results</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionResponse.summary"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.summary</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionResponse.model_config"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HealthResponse"><code class="docutils literal notranslate"><span class="pre">HealthResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HealthResponse.status"><code class="docutils literal notranslate"><span class="pre">HealthResponse.status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HealthResponse.service"><code class="docutils literal notranslate"><span class="pre">HealthResponse.service</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HealthResponse.version"><code class="docutils literal notranslate"><span class="pre">HealthResponse.version</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HealthResponse.model_config"><code class="docutils literal notranslate"><span class="pre">HealthResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.StatesResponse"><code class="docutils literal notranslate"><span class="pre">StatesResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.StatesResponse.states"><code class="docutils literal notranslate"><span class="pre">StatesResponse.states</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.StatesResponse.model_config"><code class="docutils literal notranslate"><span class="pre">StatesResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.CriteriaResponse"><code class="docutils literal notranslate"><span class="pre">CriteriaResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.CriteriaResponse.criteria"><code class="docutils literal notranslate"><span class="pre">CriteriaResponse.criteria</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.CriteriaResponse.model_config"><code class="docutils literal notranslate"><span class="pre">CriteriaResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.KilledZombiesResponse"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.KilledZombiesResponse.killed_zombies_count"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.killed_zombies_count</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.KilledZombiesResponse.since_hours"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.since_hours</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.KilledZombiesResponse.killed_zombies"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.killed_zombies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.KilledZombiesResponse.criterion_breakdown"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.criterion_breakdown</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.KilledZombiesResponse.model_config"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.zombie_id"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.zombie_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.first_seen"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.first_seen</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.last_seen"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.last_seen</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.total_detections"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.total_detections</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.is_active"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.is_active</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.killed_info"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.killed_info</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.detection_history"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.detection_history</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.model_config"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.TrackingStatsResponse"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.TrackingStatsResponse.new_zombies"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.new_zombies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.TrackingStatsResponse.persisting_zombies"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.persisting_zombies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.TrackingStatsResponse.killed_zombies"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.killed_zombies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.TrackingStatsResponse.stats"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.stats</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.TrackingStatsResponse.model_config"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.detect_zombies"><code class="docutils literal notranslate"><span class="pre">detect_zombies()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.health_check"><code class="docutils literal notranslate"><span class="pre">health_check()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.get_default_states"><code class="docutils literal notranslate"><span class="pre">get_default_states()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.get_criteria_info"><code class="docutils literal notranslate"><span class="pre">get_criteria_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.get_killed_zombies"><code class="docutils literal notranslate"><span class="pre">get_killed_zombies()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.check_zombie_killed"><code class="docutils literal notranslate"><span class="pre">check_zombie_killed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.get_zombie_lifecycle"><code class="docutils literal notranslate"><span class="pre">get_zombie_lifecycle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.get_tracking_stats"><code class="docutils literal notranslate"><span class="pre">get_tracking_stats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.cleanup_zombie_data"><code class="docutils literal notranslate"><span class="pre">cleanup_zombie_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.root"><code class="docutils literal notranslate"><span class="pre">root()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#core-endpoints">Core Endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#health-check">Health Check</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie-detection">Zombie Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#configuration-endpoints">Configuration Endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#default-states">Default States</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#criteria-information">Criteria Information</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#tracking-endpoints">Tracking Endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#killed-zombies">Killed Zombies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#zombie-lifecycle">Zombie Lifecycle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#tracking-statistics">Tracking Statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#utility-endpoints">Utility Endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rest.html#cleanup-data">Cleanup Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#rest-api-overview">REST API Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#base-url">Base URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#authentication">Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#response-format">Response Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html#error-handling">Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#interactive-documentation">Interactive Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#rate-limiting">Rate Limiting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#api-versioning">API Versioning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/rest.html">REST API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData"><code class="docutils literal notranslate"><span class="pre">HostData</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.dynatrace_host_id"><code class="docutils literal notranslate"><span class="pre">HostData.dynatrace_host_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.hostname"><code class="docutils literal notranslate"><span class="pre">HostData.hostname</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Recent_CPU_decrease_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_CPU_decrease_criterion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Recent_net_traffic_decrease_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_net_traffic_decrease_criterion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Sustained_Low_CPU_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Sustained_Low_CPU_criterion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Excessively_constant_RAM_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Excessively_constant_RAM_criterion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Daily_CPU_profile_lost_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Daily_CPU_profile_lost_criterion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.report_date"><code class="docutils literal notranslate"><span class="pre">HostData.report_date</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.tenant"><code class="docutils literal notranslate"><span class="pre">HostData.tenant</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.asset_tag"><code class="docutils literal notranslate"><span class="pre">HostData.asset_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.pending_decommission"><code class="docutils literal notranslate"><span class="pre">HostData.pending_decommission</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Recent_CPU_decrease_value"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_CPU_decrease_value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Recent_net_traffic_decrease_value"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_net_traffic_decrease_value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Sustained_Low_CPU_value"><code class="docutils literal notranslate"><span class="pre">HostData.Sustained_Low_CPU_value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Excessively_constant_RAM_value"><code class="docutils literal notranslate"><span class="pre">HostData.Excessively_constant_RAM_value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.Daily_CPU_profile_lost_value"><code class="docutils literal notranslate"><span class="pre">HostData.Daily_CPU_profile_lost_value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HostData.model_config"><code class="docutils literal notranslate"><span class="pre">HostData.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionOptions"><code class="docutils literal notranslate"><span class="pre">DetectionOptions</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionOptions.zombies_only"><code class="docutils literal notranslate"><span class="pre">DetectionOptions.zombies_only</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionOptions.include_summary"><code class="docutils literal notranslate"><span class="pre">DetectionOptions.include_summary</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionOptions.model_config"><code class="docutils literal notranslate"><span class="pre">DetectionOptions.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionRequest"><code class="docutils literal notranslate"><span class="pre">DetectionRequest</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionRequest.hosts"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.hosts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionRequest.states"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.states</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionRequest.options"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.options</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionRequest.model_config"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionResponse"><code class="docutils literal notranslate"><span class="pre">DetectionResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionResponse.status"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.status</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionResponse.results"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.results</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionResponse.summary"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.summary</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.DetectionResponse.model_config"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HealthResponse"><code class="docutils literal notranslate"><span class="pre">HealthResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HealthResponse.status"><code class="docutils literal notranslate"><span class="pre">HealthResponse.status</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HealthResponse.service"><code class="docutils literal notranslate"><span class="pre">HealthResponse.service</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HealthResponse.version"><code class="docutils literal notranslate"><span class="pre">HealthResponse.version</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.HealthResponse.model_config"><code class="docutils literal notranslate"><span class="pre">HealthResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.StatesResponse"><code class="docutils literal notranslate"><span class="pre">StatesResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.StatesResponse.states"><code class="docutils literal notranslate"><span class="pre">StatesResponse.states</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.StatesResponse.model_config"><code class="docutils literal notranslate"><span class="pre">StatesResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.CriteriaResponse"><code class="docutils literal notranslate"><span class="pre">CriteriaResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.CriteriaResponse.criteria"><code class="docutils literal notranslate"><span class="pre">CriteriaResponse.criteria</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.CriteriaResponse.model_config"><code class="docutils literal notranslate"><span class="pre">CriteriaResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.KilledZombiesResponse"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.KilledZombiesResponse.killed_zombies_count"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.killed_zombies_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.KilledZombiesResponse.since_hours"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.since_hours</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.KilledZombiesResponse.killed_zombies"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.killed_zombies</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.KilledZombiesResponse.criterion_breakdown"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.criterion_breakdown</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.KilledZombiesResponse.model_config"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.zombie_id"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.zombie_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.first_seen"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.first_seen</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.last_seen"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.last_seen</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.total_detections"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.total_detections</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.is_active"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.is_active</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.killed_info"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.killed_info</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.detection_history"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.detection_history</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.ZombieLifecycleResponse.model_config"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.TrackingStatsResponse"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.TrackingStatsResponse.new_zombies"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.new_zombies</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.TrackingStatsResponse.persisting_zombies"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.persisting_zombies</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.TrackingStatsResponse.killed_zombies"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.killed_zombies</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.TrackingStatsResponse.stats"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.stats</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.TrackingStatsResponse.model_config"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.detect_zombies"><code class="docutils literal notranslate"><span class="pre">detect_zombies()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.health_check"><code class="docutils literal notranslate"><span class="pre">health_check()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.get_default_states"><code class="docutils literal notranslate"><span class="pre">get_default_states()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.get_criteria_info"><code class="docutils literal notranslate"><span class="pre">get_criteria_info()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.get_killed_zombies"><code class="docutils literal notranslate"><span class="pre">get_killed_zombies()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.check_zombie_killed"><code class="docutils literal notranslate"><span class="pre">check_zombie_killed()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.get_zombie_lifecycle"><code class="docutils literal notranslate"><span class="pre">get_zombie_lifecycle()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.get_tracking_stats"><code class="docutils literal notranslate"><span class="pre">get_tracking_stats()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.cleanup_zombie_data"><code class="docutils literal notranslate"><span class="pre">cleanup_zombie_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#zombie_detector.api.rest.root"><code class="docutils literal notranslate"><span class="pre">root()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#core-endpoints">Core Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#health-check">Health Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie-detection">Zombie Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#configuration-endpoints">Configuration Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#default-states">Default States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#criteria-information">Criteria Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#tracking-endpoints">Tracking Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#killed-zombies">Killed Zombies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#zombie-lifecycle">Zombie Lifecycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#tracking-statistics">Tracking Statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rest.html#utility-endpoints">Utility Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rest.html#cleanup-data">Cleanup Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Performance &amp; Operations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#running-performance-tests">Running Performance Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#focused-performance-suite">Focused Performance Suite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#large-scale-performance-tests">Large Scale Performance Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#performance-analysis-results">Performance Analysis Results</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#bottleneck-identification">Bottleneck Identification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#performance-characteristics">Performance Characteristics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#dataset-size-scaling-performance">Dataset Size Scaling Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#kafka-performance-impact-analysis">Kafka Performance Impact Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#concurrency-performance-analysis">Concurrency Performance Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#memory-efficiency-analysis">Memory Efficiency Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#cli-vs-api-performance-comparison">CLI vs API Performance Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#performance-graphs-and-visualization">Performance Graphs and Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#performance-scaling-analysis">Performance Scaling Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#id1">Kafka Performance Impact Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#id2">Concurrency Performance Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#id3">Memory Efficiency Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#id4">CLI vs API Performance Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#graph-generation-methods">Graph Generation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#manual-graph-generation">Manual Graph Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#automated-graph-generation">Automated Graph Generation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#graph-file-specifications">Graph File Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#scaling-analysis">Scaling Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#optimization-recommendations">Optimization Recommendations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#primary-optimizations-tracking">Primary Optimizations (Tracking)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#secondary-optimizations-kafka">Secondary Optimizations (Kafka)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#concurrency-optimizations">Concurrency Optimizations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#performance-monitoring">Performance Monitoring</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#production-monitoring">Production Monitoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#performance-debugging">Performance Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#performance-requirements">Performance Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#minimum-standards">Minimum Standards</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#troubleshooting-performance-issues">Troubleshooting Performance Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#common-performance-problems">Common Performance Problems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#performance-testing-integration">Performance Testing Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#ci-cd-integration">CI/CD Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#development-workflow">Development Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developer/index.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="developer/index.html#development-overview">Development Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/index.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/index.html#code-style">Code Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/index.html#type-checking">Type Checking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/index.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/index.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/index.html#release-process">Release Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/index.html#contributing-workflow">Contributing Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer/index.html#code-quality-standards">Code Quality Standards</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Zombie Detector</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Zombie Tracking</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/santander-cantabria/zombie-detector/blob/master/docs/tracking.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="classification.html" class="btn btn-neutral float-left" title="Zombie Classification" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="zombie-tracking">
+<h1>Zombie Tracking<a class="headerlink" href="#zombie-tracking" title="Link to this heading"></a></h1>
+<p>The Zombie Detector includes comprehensive tracking capabilities to monitor zombie lifecycles over time.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The tracking system provides:</p>
+<ul class="simple">
+<li><p><strong>Lifecycle Management</strong>: Track when zombies first appear and when they’re resolved</p></li>
+<li><p><strong>Historical Analysis</strong>: View zombie trends and patterns</p></li>
+<li><p><strong>Resolution Detection</strong>: Automatically detect when zombies are “killed”</p></li>
+<li><p><strong>Statistics and Reporting</strong>: Generate detailed reports on zombie populations</p></li>
+</ul>
+</section>
+<section id="how-tracking-works">
+<h2>How Tracking Works<a class="headerlink" href="#how-tracking-works" title="Link to this heading"></a></h2>
+<section id="detection-flow">
+<h3>Detection Flow<a class="headerlink" href="#detection-flow" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>First Detection</strong>: When a host meets zombie criteria, it’s recorded as a new zombie</p></li>
+<li><p><strong>Persistence Tracking</strong>: Subsequent detections update the “last seen” timestamp</p></li>
+<li><p><strong>Kill Detection</strong>: When a zombie no longer appears, it’s marked as “killed”</p></li>
+<li><p><strong>Historical Storage</strong>: All activity is stored for analysis</p></li>
+</ol>
+</section>
+<section id="data-files">
+<h3>Data Files<a class="headerlink" href="#data-files" title="Link to this heading"></a></h3>
+<p>The system maintains three tracking files:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">/var/lib/zombie-detector/current_zombies.json</span></code></dt><dd><p>Current active zombies and statistics</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">/var/lib/zombie-detector/zombie_history.json</span></code></dt><dd><p>Historical detection records</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">/var/lib/zombie-detector/killed_zombies.json</span></code></dt><dd><p>Record of resolved zombies</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="using-the-tracking-system">
+<h2>Using the Tracking System<a class="headerlink" href="#using-the-tracking-system" title="Link to this heading"></a></h2>
+<section id="cli-commands">
+<h3>CLI Commands<a class="headerlink" href="#cli-commands" title="Link to this heading"></a></h3>
+<p>Check killed zombies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Last 24 hours</span>
+zombie-detector<span class="w"> </span>killed
+
+<span class="c1"># Custom time period</span>
+zombie-detector<span class="w"> </span>killed<span class="w"> </span>--since-hours<span class="w"> </span><span class="m">48</span>
+
+<span class="c1"># Save to file</span>
+zombie-detector<span class="w"> </span>killed<span class="w"> </span>--output<span class="w"> </span>killed_report.json
+</pre></div>
+</div>
+<p>Check specific zombie:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic status</span>
+zombie-detector<span class="w"> </span>check<span class="w"> </span>HOST-1
+
+<span class="c1"># Full lifecycle</span>
+zombie-detector<span class="w"> </span>check<span class="w"> </span>HOST-1<span class="w"> </span>--lifecycle
+</pre></div>
+</div>
+<p>Clean up old data:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Keep last 30 days</span>
+zombie-detector<span class="w"> </span>cleanup<span class="w"> </span>--days<span class="w"> </span><span class="m">30</span>
+</pre></div>
+</div>
+</section>
+<section id="api-endpoints">
+<h3>API Endpoints<a class="headerlink" href="#api-endpoints" title="Link to this heading"></a></h3>
+<p><strong>Get killed zombies:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/api/v1/zombies/killed?since_hours=24&quot;</span>
+</pre></div>
+</div>
+<p><strong>Check zombie lifecycle:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>http://localhost:8000/api/v1/zombies/HOST-1/lifecycle
+</pre></div>
+</div>
+<p><strong>Get tracking statistics:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>http://localhost:8000/api/v1/zombies/tracking-stats
+</pre></div>
+</div>
+</section>
+</section>
+<section id="data-structures">
+<h2>Data Structures<a class="headerlink" href="#data-structures" title="Link to this heading"></a></h2>
+<section id="current-zombies">
+<h3>Current Zombies<a class="headerlink" href="#current-zombies" title="Link to this heading"></a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-01-30T10:00:00&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;zombies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;dynatrace_host_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HOST-1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hostname1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;criterion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2A&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;criterion_alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mummy&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;is_zombie&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;zombie_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;HOST-1&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;stats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;total_zombies&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;new_zombies&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;persisting_zombies&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;killed_zombies&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="zombie-history">
+<h3>Zombie History<a class="headerlink" href="#zombie-history" title="Link to this heading"></a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;history&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-01-30T10:00:00&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;zombie_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;zombies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;dynatrace_host_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HOST-1&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;criterion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2A&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;is_zombie&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="killed-zombies">
+<h3>Killed Zombies<a class="headerlink" href="#killed-zombies" title="Link to this heading"></a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;killed_zombies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;dynatrace_host_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HOST-2&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hostname2&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;criterion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1A&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;killed_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-01-30T11:00:00&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;last_detection&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;criterion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1A&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_zombie&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Tracking can be configured in <code class="docutils literal notranslate"><span class="pre">/etc/zombie-detector/zombie-detector.ini</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[tracking]</span>
+<span class="na">max_history_entries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span>
+<span class="na">cleanup_days</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">30</span>
+<span class="na">enable_lifecycle_events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+</pre></div>
+</div>
+</section>
+<section id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading"></a></h2>
+<section id="data-management">
+<h3>Data Management<a class="headerlink" href="#data-management" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Regular cleanup of old tracking data</p></li>
+<li><p>Monitor disk usage in <code class="docutils literal notranslate"><span class="pre">/var/lib/zombie-detector/</span></code></p></li>
+<li><p>Backup tracking data before major changes</p></li>
+</ul>
+</section>
+<section id="analysis-workflow">
+<h3>Analysis Workflow<a class="headerlink" href="#analysis-workflow" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Run regular zombie detection</p></li>
+<li><p>Monitor tracking statistics</p></li>
+<li><p>Investigate persistent zombies</p></li>
+<li><p>Verify resolution of killed zombies</p></li>
+<li><p>Generate periodic reports</p></li>
+</ol>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="common-issues">
+<h3>Common Issues<a class="headerlink" href="#common-issues" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>Tracking files not updating</strong></dt><dd><ul class="simple">
+<li><p>Check permissions on <code class="docutils literal notranslate"><span class="pre">/var/lib/zombie-detector/</span></code></p></li>
+<li><p>Verify service user can write to directory</p></li>
+</ul>
+</dd>
+<dt><strong>High disk usage</strong></dt><dd><ul class="simple">
+<li><p>Run cleanup more frequently</p></li>
+<li><p>Reduce <code class="docutils literal notranslate"><span class="pre">max_history_entries</span></code> setting</p></li>
+</ul>
+</dd>
+<dt><strong>Missing killed zombies</strong></dt><dd><ul class="simple">
+<li><p>Ensure consistent detection runs</p></li>
+<li><p>Check that zombie resolution is actually occurring</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="classification.html" class="btn btn-neutral float-left" title="Zombie Classification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Dayron Fernandez Acosta.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
