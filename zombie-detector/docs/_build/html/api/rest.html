@@ -1,0 +1,1174 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REST API &mdash; Zombie Detector 0.1.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=226ce854" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a58bc63e"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Performance Testing" href="../performance.html" />
+    <link rel="prev" title="API Reference" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Zombie Detector
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-methods">Installation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#from-source">From Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#from-package-rpm-deb">From Package (RPM/DEB)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#development-installation">Development Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#post-installation-setup">Post-Installation Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#verification">Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#installation">1. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#basic-cli-usage">2. Basic CLI Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#start-the-api-server">3. Start the API Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#test-the-api">4. Test the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#view-documentation">5. View Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#example-data-format">Example Data Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html#configuration-files">Configuration Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#main-configuration">Main Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html#configuration-sections">Configuration Sections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#api-section">API Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#detection-section">Detection Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#kafka-section">Kafka Section</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration.html#basic-configuration">Basic Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration.html#producer-configuration">Producer Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration.html#security-configuration">Security Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#tracking-section">Tracking Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#logging-section">Logging Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#states-configuration">States Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html#environment-variables">Environment Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#service-configuration">Service Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#data-processing">Data Processing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html#configuration-priority">Configuration Priority</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html#detection-criteria-configuration">Detection Criteria Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#single-criteria-1a-1e">Single Criteria (1A-1E)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#double-criteria-2a-2j">Double Criteria (2A-2J)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html#environment-specific-configurations-examples">Environment-Specific Configurations Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#development-configuration">Development Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration.html#production-configuration">Production Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html#configuration-templates">Configuration Templates</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/index.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/index.html#detection-criteria">Detection Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/index.html#classification-system">Classification System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/index.html#states-configuration">States Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../classification.html">Zombie Classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../classification.html#complete-zombie-type-reference">Complete Zombie Type Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../classification.html#single-criteria-zombies-1a-1e">Single Criteria Zombies (1A-1E)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../classification.html#double-criteria-zombies-2a-2j">Double Criteria Zombies (2A-2J)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../classification.html#triple-criteria-zombies-3a-3j">Triple Criteria Zombies (3A-3J)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../classification.html#quad-criteria-zombies-4a-4e">Quad Criteria Zombies (4A-4E)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../classification.html#ultimate-zombie-5">Ultimate Zombie (5)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../classification.html#classification-logic">Classification Logic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../classification.html#code-generation-rules">Code Generation Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../classification.html#usage-in-detection">Usage in Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification.html#api-integration">API Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tracking.html">Zombie Tracking</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html#how-tracking-works">How Tracking Works</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tracking.html#detection-flow">Detection Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tracking.html#data-files">Data Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html#using-the-tracking-system">Using the Tracking System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tracking.html#cli-commands">CLI Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tracking.html#api-endpoints">API Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html#data-structures">Data Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tracking.html#current-zombies">Current Zombies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tracking.html#zombie-history">Zombie History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tracking.html#killed-zombies">Killed Zombies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tracking.html#data-management">Data Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tracking.html#analysis-workflow">Analysis Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tracking.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tracking.html#common-issues">Common Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#basic-examples">Basic Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples.html#cli-usage">CLI Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples.html#api-usage">API Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#real-world-scenarios">Real-World Scenarios</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples.html#daily-monitoring">Daily Monitoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples.html#emergency-investigation">Emergency Investigation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#python-integration">Python Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#configuration-examples">Configuration Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples.html#states-configuration">States Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples.html#service-configuration">Service Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#monitoring-examples">Monitoring Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples.html#health-check-script">Health Check Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples.html#performance-monitoring">Performance Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#troubleshooting-examples">Troubleshooting Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples.html#debug-high-memory-usage">Debug High Memory Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples.html#debug-api-issues">Debug API Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#automation-scripts">Automation Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples.html#weekly-report-generation">Weekly Report Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples.html#batch-processing">Batch Processing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">REST API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData"><code class="docutils literal notranslate"><span class="pre">HostData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.dynatrace_host_id"><code class="docutils literal notranslate"><span class="pre">HostData.dynatrace_host_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.hostname"><code class="docutils literal notranslate"><span class="pre">HostData.hostname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Recent_CPU_decrease_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_CPU_decrease_criterion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Recent_net_traffic_decrease_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_net_traffic_decrease_criterion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Sustained_Low_CPU_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Sustained_Low_CPU_criterion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Excessively_constant_RAM_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Excessively_constant_RAM_criterion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Daily_CPU_profile_lost_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Daily_CPU_profile_lost_criterion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.report_date"><code class="docutils literal notranslate"><span class="pre">HostData.report_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.tenant"><code class="docutils literal notranslate"><span class="pre">HostData.tenant</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.asset_tag"><code class="docutils literal notranslate"><span class="pre">HostData.asset_tag</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.pending_decommission"><code class="docutils literal notranslate"><span class="pre">HostData.pending_decommission</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Recent_CPU_decrease_value"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_CPU_decrease_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Recent_net_traffic_decrease_value"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_net_traffic_decrease_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Sustained_Low_CPU_value"><code class="docutils literal notranslate"><span class="pre">HostData.Sustained_Low_CPU_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Excessively_constant_RAM_value"><code class="docutils literal notranslate"><span class="pre">HostData.Excessively_constant_RAM_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Daily_CPU_profile_lost_value"><code class="docutils literal notranslate"><span class="pre">HostData.Daily_CPU_profile_lost_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HostData.model_config"><code class="docutils literal notranslate"><span class="pre">HostData.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionOptions"><code class="docutils literal notranslate"><span class="pre">DetectionOptions</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.DetectionOptions.zombies_only"><code class="docutils literal notranslate"><span class="pre">DetectionOptions.zombies_only</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.DetectionOptions.include_summary"><code class="docutils literal notranslate"><span class="pre">DetectionOptions.include_summary</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.DetectionOptions.model_config"><code class="docutils literal notranslate"><span class="pre">DetectionOptions.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionRequest"><code class="docutils literal notranslate"><span class="pre">DetectionRequest</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.DetectionRequest.hosts"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.hosts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.DetectionRequest.states"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.states</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.DetectionRequest.options"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.options</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.DetectionRequest.model_config"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionResponse"><code class="docutils literal notranslate"><span class="pre">DetectionResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.DetectionResponse.status"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.DetectionResponse.results"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.results</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.DetectionResponse.summary"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.summary</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.DetectionResponse.model_config"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HealthResponse"><code class="docutils literal notranslate"><span class="pre">HealthResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HealthResponse.status"><code class="docutils literal notranslate"><span class="pre">HealthResponse.status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HealthResponse.service"><code class="docutils literal notranslate"><span class="pre">HealthResponse.service</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HealthResponse.version"><code class="docutils literal notranslate"><span class="pre">HealthResponse.version</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.HealthResponse.model_config"><code class="docutils literal notranslate"><span class="pre">HealthResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.StatesResponse"><code class="docutils literal notranslate"><span class="pre">StatesResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.StatesResponse.states"><code class="docutils literal notranslate"><span class="pre">StatesResponse.states</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.StatesResponse.model_config"><code class="docutils literal notranslate"><span class="pre">StatesResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.CriteriaResponse"><code class="docutils literal notranslate"><span class="pre">CriteriaResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.CriteriaResponse.criteria"><code class="docutils literal notranslate"><span class="pre">CriteriaResponse.criteria</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.CriteriaResponse.model_config"><code class="docutils literal notranslate"><span class="pre">CriteriaResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.KilledZombiesResponse"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.KilledZombiesResponse.killed_zombies_count"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.killed_zombies_count</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.KilledZombiesResponse.since_hours"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.since_hours</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.KilledZombiesResponse.killed_zombies"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.killed_zombies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.KilledZombiesResponse.criterion_breakdown"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.criterion_breakdown</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.KilledZombiesResponse.model_config"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.zombie_id"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.zombie_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.first_seen"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.first_seen</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.last_seen"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.last_seen</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.total_detections"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.total_detections</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.is_active"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.is_active</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.killed_info"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.killed_info</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.detection_history"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.detection_history</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.model_config"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.TrackingStatsResponse"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.TrackingStatsResponse.new_zombies"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.new_zombies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.TrackingStatsResponse.persisting_zombies"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.persisting_zombies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.TrackingStatsResponse.killed_zombies"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.killed_zombies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.TrackingStatsResponse.stats"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.stats</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie_detector.api.rest.TrackingStatsResponse.model_config"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.detect_zombies"><code class="docutils literal notranslate"><span class="pre">detect_zombies()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.health_check"><code class="docutils literal notranslate"><span class="pre">health_check()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.get_default_states"><code class="docutils literal notranslate"><span class="pre">get_default_states()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.get_criteria_info"><code class="docutils literal notranslate"><span class="pre">get_criteria_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.get_killed_zombies"><code class="docutils literal notranslate"><span class="pre">get_killed_zombies()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.check_zombie_killed"><code class="docutils literal notranslate"><span class="pre">check_zombie_killed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.get_zombie_lifecycle"><code class="docutils literal notranslate"><span class="pre">get_zombie_lifecycle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.get_tracking_stats"><code class="docutils literal notranslate"><span class="pre">get_tracking_stats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.cleanup_zombie_data"><code class="docutils literal notranslate"><span class="pre">cleanup_zombie_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.root"><code class="docutils literal notranslate"><span class="pre">root()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#core-endpoints">Core Endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#health-check">Health Check</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie-detection">Zombie Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-endpoints">Configuration Endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#default-states">Default States</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#criteria-information">Criteria Information</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tracking-endpoints">Tracking Endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#killed-zombies">Killed Zombies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zombie-lifecycle">Zombie Lifecycle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tracking-statistics">Tracking Statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#utility-endpoints">Utility Endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cleanup-data">Cleanup Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#rest-api-overview">REST API Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index.html#base-url">Base URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#authentication">Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#response-format">Response Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#error-handling">Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#interactive-documentation">Interactive Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#rate-limiting">Rate Limiting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#api-versioning">API Versioning</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">REST API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.HostData"><code class="docutils literal notranslate"><span class="pre">HostData</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.dynatrace_host_id"><code class="docutils literal notranslate"><span class="pre">HostData.dynatrace_host_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.hostname"><code class="docutils literal notranslate"><span class="pre">HostData.hostname</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Recent_CPU_decrease_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_CPU_decrease_criterion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Recent_net_traffic_decrease_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_net_traffic_decrease_criterion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Sustained_Low_CPU_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Sustained_Low_CPU_criterion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Excessively_constant_RAM_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Excessively_constant_RAM_criterion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Daily_CPU_profile_lost_criterion"><code class="docutils literal notranslate"><span class="pre">HostData.Daily_CPU_profile_lost_criterion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.report_date"><code class="docutils literal notranslate"><span class="pre">HostData.report_date</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.tenant"><code class="docutils literal notranslate"><span class="pre">HostData.tenant</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.asset_tag"><code class="docutils literal notranslate"><span class="pre">HostData.asset_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.pending_decommission"><code class="docutils literal notranslate"><span class="pre">HostData.pending_decommission</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Recent_CPU_decrease_value"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_CPU_decrease_value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Recent_net_traffic_decrease_value"><code class="docutils literal notranslate"><span class="pre">HostData.Recent_net_traffic_decrease_value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Sustained_Low_CPU_value"><code class="docutils literal notranslate"><span class="pre">HostData.Sustained_Low_CPU_value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Excessively_constant_RAM_value"><code class="docutils literal notranslate"><span class="pre">HostData.Excessively_constant_RAM_value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.Daily_CPU_profile_lost_value"><code class="docutils literal notranslate"><span class="pre">HostData.Daily_CPU_profile_lost_value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HostData.model_config"><code class="docutils literal notranslate"><span class="pre">HostData.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.DetectionOptions"><code class="docutils literal notranslate"><span class="pre">DetectionOptions</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionOptions.zombies_only"><code class="docutils literal notranslate"><span class="pre">DetectionOptions.zombies_only</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionOptions.include_summary"><code class="docutils literal notranslate"><span class="pre">DetectionOptions.include_summary</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionOptions.model_config"><code class="docutils literal notranslate"><span class="pre">DetectionOptions.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.DetectionRequest"><code class="docutils literal notranslate"><span class="pre">DetectionRequest</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionRequest.hosts"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.hosts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionRequest.states"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.states</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionRequest.options"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.options</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionRequest.model_config"><code class="docutils literal notranslate"><span class="pre">DetectionRequest.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.DetectionResponse"><code class="docutils literal notranslate"><span class="pre">DetectionResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionResponse.status"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.status</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionResponse.results"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.results</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionResponse.summary"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.summary</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.DetectionResponse.model_config"><code class="docutils literal notranslate"><span class="pre">DetectionResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.HealthResponse"><code class="docutils literal notranslate"><span class="pre">HealthResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HealthResponse.status"><code class="docutils literal notranslate"><span class="pre">HealthResponse.status</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HealthResponse.service"><code class="docutils literal notranslate"><span class="pre">HealthResponse.service</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HealthResponse.version"><code class="docutils literal notranslate"><span class="pre">HealthResponse.version</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.HealthResponse.model_config"><code class="docutils literal notranslate"><span class="pre">HealthResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.StatesResponse"><code class="docutils literal notranslate"><span class="pre">StatesResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.StatesResponse.states"><code class="docutils literal notranslate"><span class="pre">StatesResponse.states</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.StatesResponse.model_config"><code class="docutils literal notranslate"><span class="pre">StatesResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.CriteriaResponse"><code class="docutils literal notranslate"><span class="pre">CriteriaResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.CriteriaResponse.criteria"><code class="docutils literal notranslate"><span class="pre">CriteriaResponse.criteria</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.CriteriaResponse.model_config"><code class="docutils literal notranslate"><span class="pre">CriteriaResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.KilledZombiesResponse"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.KilledZombiesResponse.killed_zombies_count"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.killed_zombies_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.KilledZombiesResponse.since_hours"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.since_hours</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.KilledZombiesResponse.killed_zombies"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.killed_zombies</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.KilledZombiesResponse.criterion_breakdown"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.criterion_breakdown</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.KilledZombiesResponse.model_config"><code class="docutils literal notranslate"><span class="pre">KilledZombiesResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.zombie_id"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.zombie_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.first_seen"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.first_seen</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.last_seen"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.last_seen</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.total_detections"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.total_detections</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.is_active"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.is_active</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.killed_info"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.killed_info</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.detection_history"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.detection_history</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.ZombieLifecycleResponse.model_config"><code class="docutils literal notranslate"><span class="pre">ZombieLifecycleResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.TrackingStatsResponse"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.TrackingStatsResponse.new_zombies"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.new_zombies</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.TrackingStatsResponse.persisting_zombies"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.persisting_zombies</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.TrackingStatsResponse.killed_zombies"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.killed_zombies</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.TrackingStatsResponse.stats"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.stats</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie_detector.api.rest.TrackingStatsResponse.model_config"><code class="docutils literal notranslate"><span class="pre">TrackingStatsResponse.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.detect_zombies"><code class="docutils literal notranslate"><span class="pre">detect_zombies()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.health_check"><code class="docutils literal notranslate"><span class="pre">health_check()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.get_default_states"><code class="docutils literal notranslate"><span class="pre">get_default_states()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.get_criteria_info"><code class="docutils literal notranslate"><span class="pre">get_criteria_info()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.get_killed_zombies"><code class="docutils literal notranslate"><span class="pre">get_killed_zombies()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.check_zombie_killed"><code class="docutils literal notranslate"><span class="pre">check_zombie_killed()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.get_zombie_lifecycle"><code class="docutils literal notranslate"><span class="pre">get_zombie_lifecycle()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.get_tracking_stats"><code class="docutils literal notranslate"><span class="pre">get_tracking_stats()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.cleanup_zombie_data"><code class="docutils literal notranslate"><span class="pre">cleanup_zombie_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zombie_detector.api.rest.root"><code class="docutils literal notranslate"><span class="pre">root()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core-endpoints">Core Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#health-check">Health Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie-detection">Zombie Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-endpoints">Configuration Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#default-states">Default States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#criteria-information">Criteria Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tracking-endpoints">Tracking Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#killed-zombies">Killed Zombies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zombie-lifecycle">Zombie Lifecycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tracking-statistics">Tracking Statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utility-endpoints">Utility Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cleanup-data">Cleanup Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Performance &amp; Operations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../performance.html">Performance Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#running-performance-tests">Running Performance Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#focused-performance-suite">Focused Performance Suite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#large-scale-performance-tests">Large Scale Performance Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#performance-analysis-results">Performance Analysis Results</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#bottleneck-identification">Bottleneck Identification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#performance-characteristics">Performance Characteristics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#dataset-size-scaling-performance">Dataset Size Scaling Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#kafka-performance-impact-analysis">Kafka Performance Impact Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#concurrency-performance-analysis">Concurrency Performance Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#memory-efficiency-analysis">Memory Efficiency Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#cli-vs-api-performance-comparison">CLI vs API Performance Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#performance-graphs-and-visualization">Performance Graphs and Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#performance-scaling-analysis">Performance Scaling Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#id1">Kafka Performance Impact Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#id2">Concurrency Performance Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#id3">Memory Efficiency Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#id4">CLI vs API Performance Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#graph-generation-methods">Graph Generation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#manual-graph-generation">Manual Graph Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#automated-graph-generation">Automated Graph Generation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#graph-file-specifications">Graph File Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#scaling-analysis">Scaling Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#optimization-recommendations">Optimization Recommendations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#primary-optimizations-tracking">Primary Optimizations (Tracking)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#secondary-optimizations-kafka">Secondary Optimizations (Kafka)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#concurrency-optimizations">Concurrency Optimizations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#performance-monitoring">Performance Monitoring</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#production-monitoring">Production Monitoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#performance-debugging">Performance Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#performance-requirements">Performance Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#minimum-standards">Minimum Standards</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#troubleshooting-performance-issues">Troubleshooting Performance Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#common-performance-problems">Common Performance Problems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#performance-testing-integration">Performance Testing Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#ci-cd-integration">CI/CD Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../performance.html#development-workflow">Development Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../developer/index.html#development-overview">Development Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer/index.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer/index.html#code-style">Code Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer/index.html#type-checking">Type Checking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer/index.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer/index.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer/index.html#release-process">Release Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer/index.html#contributing-workflow">Contributing Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer/index.html#code-quality-standards">Code Quality Standards</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Zombie Detector</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API Reference</a></li>
+      <li class="breadcrumb-item active">REST API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/santander-cantabria/zombie-detector/blob/master/docs/api/rest.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../performance.html" class="btn btn-neutral float-right" title="Performance Testing" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rest-api">
+<h1>REST API<a class="headerlink" href="#rest-api" title="Link to this heading"></a></h1>
+<p>Detailed documentation for all REST API endpoints.</p>
+<dl class="py class" id="module-zombie_detector.api.rest">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">HostData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dynatrace_host_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hostname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Recent_CPU_decrease_criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Recent_net_traffic_decrease_criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sustained_Low_CPU_criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Excessively_constant_RAM_criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Daily_CPU_profile_lost_criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">report_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tenant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pending_decommission</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Recent_CPU_decrease_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Recent_net_traffic_decrease_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sustained_Low_CPU_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Excessively_constant_RAM_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Daily_CPU_profile_lost_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#HostData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.HostData" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dynatrace_host_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>hostname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>Recent_CPU_decrease_criterion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>Recent_net_traffic_decrease_criterion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>Sustained_Low_CPU_criterion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>Excessively_constant_RAM_criterion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>Daily_CPU_profile_lost_criterion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>report_date</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>tenant</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>asset_tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>pending_decommission</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>Recent_CPU_decrease_value</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>Recent_net_traffic_decrease_value</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>Sustained_Low_CPU_value</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>Excessively_constant_RAM_value</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>Daily_CPU_profile_lost_value</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.dynatrace_host_id">
+<span class="sig-name descname"><span class="pre">dynatrace_host_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.dynatrace_host_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.hostname">
+<span class="sig-name descname"><span class="pre">hostname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.hostname" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.Recent_CPU_decrease_criterion">
+<span class="sig-name descname"><span class="pre">Recent_CPU_decrease_criterion</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.Recent_CPU_decrease_criterion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.Recent_net_traffic_decrease_criterion">
+<span class="sig-name descname"><span class="pre">Recent_net_traffic_decrease_criterion</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.Recent_net_traffic_decrease_criterion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.Sustained_Low_CPU_criterion">
+<span class="sig-name descname"><span class="pre">Sustained_Low_CPU_criterion</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.Sustained_Low_CPU_criterion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.Excessively_constant_RAM_criterion">
+<span class="sig-name descname"><span class="pre">Excessively_constant_RAM_criterion</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.Excessively_constant_RAM_criterion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.Daily_CPU_profile_lost_criterion">
+<span class="sig-name descname"><span class="pre">Daily_CPU_profile_lost_criterion</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.Daily_CPU_profile_lost_criterion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.report_date">
+<span class="sig-name descname"><span class="pre">report_date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.report_date" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.tenant">
+<span class="sig-name descname"><span class="pre">tenant</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.tenant" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.asset_tag">
+<span class="sig-name descname"><span class="pre">asset_tag</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.asset_tag" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.pending_decommission">
+<span class="sig-name descname"><span class="pre">pending_decommission</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.pending_decommission" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.Recent_CPU_decrease_value">
+<span class="sig-name descname"><span class="pre">Recent_CPU_decrease_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.Recent_CPU_decrease_value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.Recent_net_traffic_decrease_value">
+<span class="sig-name descname"><span class="pre">Recent_net_traffic_decrease_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.Recent_net_traffic_decrease_value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.Sustained_Low_CPU_value">
+<span class="sig-name descname"><span class="pre">Sustained_Low_CPU_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.Sustained_Low_CPU_value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.Excessively_constant_RAM_value">
+<span class="sig-name descname"><span class="pre">Excessively_constant_RAM_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.Excessively_constant_RAM_value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.Daily_CPU_profile_lost_value">
+<span class="sig-name descname"><span class="pre">Daily_CPU_profile_lost_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.Daily_CPU_profile_lost_value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HostData.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#zombie_detector.api.rest.HostData.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionOptions">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">DetectionOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zombies_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_summary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#DetectionOptions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.DetectionOptions" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>zombies_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>include_summary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionOptions.zombies_only">
+<span class="sig-name descname"><span class="pre">zombies_only</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.DetectionOptions.zombies_only" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionOptions.include_summary">
+<span class="sig-name descname"><span class="pre">include_summary</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.DetectionOptions.include_summary" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionOptions.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#zombie_detector.api.rest.DetectionOptions.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionRequest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">DetectionRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hosts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#DetectionRequest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.DetectionRequest" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hosts</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a><em>]</em><em>]</em>)</p></li>
+<li><p><strong>states</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>options</strong> (<a class="reference internal" href="#zombie_detector.api.rest.DetectionOptions" title="zombie_detector.api.rest.DetectionOptions"><em>DetectionOptions</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionRequest.hosts">
+<span class="sig-name descname"><span class="pre">hosts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#zombie_detector.api.rest.DetectionRequest.hosts" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionRequest.states">
+<span class="sig-name descname"><span class="pre">states</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.DetectionRequest.states" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionRequest.options">
+<span class="sig-name descname"><span class="pre">options</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#zombie_detector.api.rest.DetectionOptions" title="zombie_detector.api.rest.DetectionOptions"><span class="pre">DetectionOptions</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.DetectionRequest.options" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionRequest.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#zombie_detector.api.rest.DetectionRequest.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionResponse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">DetectionResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#DetectionResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.DetectionResponse" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>status</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>results</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a><em>]</em><em>]</em>)</p></li>
+<li><p><strong>summary</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionResponse.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.DetectionResponse.status" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionResponse.results">
+<span class="sig-name descname"><span class="pre">results</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#zombie_detector.api.rest.DetectionResponse.results" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionResponse.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.DetectionResponse.summary" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.DetectionResponse.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#zombie_detector.api.rest.DetectionResponse.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HealthResponse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">HealthResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.1.0'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#HealthResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.HealthResponse" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>status</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>service</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>version</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HealthResponse.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HealthResponse.status" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HealthResponse.service">
+<span class="sig-name descname"><span class="pre">service</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HealthResponse.service" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HealthResponse.version">
+<span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.HealthResponse.version" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.HealthResponse.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#zombie_detector.api.rest.HealthResponse.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.StatesResponse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">StatesResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#StatesResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.StatesResponse" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>states</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.StatesResponse.states">
+<span class="sig-name descname"><span class="pre">states</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#zombie_detector.api.rest.StatesResponse.states" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.StatesResponse.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#zombie_detector.api.rest.StatesResponse.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.CriteriaResponse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">CriteriaResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criteria</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#CriteriaResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.CriteriaResponse" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>criteria</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.CriteriaResponse.criteria">
+<span class="sig-name descname"><span class="pre">criteria</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#zombie_detector.api.rest.CriteriaResponse.criteria" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.CriteriaResponse.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#zombie_detector.api.rest.CriteriaResponse.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.KilledZombiesResponse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">KilledZombiesResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">killed_zombies_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">since_hours</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">killed_zombies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion_breakdown</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#KilledZombiesResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.KilledZombiesResponse" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>killed_zombies_count</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>since_hours</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>killed_zombies</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a><em>]</em><em>]</em>)</p></li>
+<li><p><strong>criterion_breakdown</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.KilledZombiesResponse.killed_zombies_count">
+<span class="sig-name descname"><span class="pre">killed_zombies_count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.KilledZombiesResponse.killed_zombies_count" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.KilledZombiesResponse.since_hours">
+<span class="sig-name descname"><span class="pre">since_hours</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.KilledZombiesResponse.since_hours" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.KilledZombiesResponse.killed_zombies">
+<span class="sig-name descname"><span class="pre">killed_zombies</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#zombie_detector.api.rest.KilledZombiesResponse.killed_zombies" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.KilledZombiesResponse.criterion_breakdown">
+<span class="sig-name descname"><span class="pre">criterion_breakdown</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#zombie_detector.api.rest.KilledZombiesResponse.criterion_breakdown" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.KilledZombiesResponse.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#zombie_detector.api.rest.KilledZombiesResponse.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.ZombieLifecycleResponse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">ZombieLifecycleResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zombie_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_seen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_seen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_detections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_active</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">killed_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detection_history</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#ZombieLifecycleResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.ZombieLifecycleResponse" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>zombie_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>first_seen</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>last_seen</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>total_detections</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>is_active</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>killed_info</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>detection_history</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a><em>]</em><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.ZombieLifecycleResponse.zombie_id">
+<span class="sig-name descname"><span class="pre">zombie_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.ZombieLifecycleResponse.zombie_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.ZombieLifecycleResponse.first_seen">
+<span class="sig-name descname"><span class="pre">first_seen</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.ZombieLifecycleResponse.first_seen" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.ZombieLifecycleResponse.last_seen">
+<span class="sig-name descname"><span class="pre">last_seen</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.ZombieLifecycleResponse.last_seen" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.ZombieLifecycleResponse.total_detections">
+<span class="sig-name descname"><span class="pre">total_detections</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.ZombieLifecycleResponse.total_detections" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.ZombieLifecycleResponse.is_active">
+<span class="sig-name descname"><span class="pre">is_active</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.ZombieLifecycleResponse.is_active" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.ZombieLifecycleResponse.killed_info">
+<span class="sig-name descname"><span class="pre">killed_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#zombie_detector.api.rest.ZombieLifecycleResponse.killed_info" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.ZombieLifecycleResponse.detection_history">
+<span class="sig-name descname"><span class="pre">detection_history</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#zombie_detector.api.rest.ZombieLifecycleResponse.detection_history" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.ZombieLifecycleResponse.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#zombie_detector.api.rest.ZombieLifecycleResponse.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.TrackingStatsResponse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">TrackingStatsResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_zombies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persisting_zombies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">killed_zombies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#TrackingStatsResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.TrackingStatsResponse" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_zombies</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
+<li><p><strong>persisting_zombies</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
+<li><p><strong>killed_zombies</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
+<li><p><strong>stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.TrackingStatsResponse.new_zombies">
+<span class="sig-name descname"><span class="pre">new_zombies</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#zombie_detector.api.rest.TrackingStatsResponse.new_zombies" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.TrackingStatsResponse.persisting_zombies">
+<span class="sig-name descname"><span class="pre">persisting_zombies</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#zombie_detector.api.rest.TrackingStatsResponse.persisting_zombies" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.TrackingStatsResponse.killed_zombies">
+<span class="sig-name descname"><span class="pre">killed_zombies</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#zombie_detector.api.rest.TrackingStatsResponse.killed_zombies" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.TrackingStatsResponse.stats">
+<span class="sig-name descname"><span class="pre">stats</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#zombie_detector.api.rest.TrackingStatsResponse.stats" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.TrackingStatsResponse.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#zombie_detector.api.rest.TrackingStatsResponse.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.detect_zombies">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">detect_zombies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#detect_zombies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.detect_zombies" title="Link to this definition"></a></dt>
+<dd><p>Detect zombie hosts based on performance criteria.</p>
+<ul class="simple">
+<li><p><strong>hosts</strong>: List of host data objects with performance metrics</p></li>
+<li><p><strong>states</strong>: Optional criterion states configuration (0=inactive, 1=active)</p></li>
+<li><p><strong>options</strong>: Detection options (zombies_only, include_summary)</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<a class="reference internal" href="#zombie_detector.api.rest.DetectionRequest" title="zombie_detector.api.rest.DetectionRequest"><em>DetectionRequest</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.health_check">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">health_check</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#health_check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.health_check" title="Link to this definition"></a></dt>
+<dd><p>Health check endpoint.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.get_default_states">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">get_default_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#get_default_states"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.get_default_states" title="Link to this definition"></a></dt>
+<dd><p>Get default criterion states configuration.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.get_criteria_info">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">get_criteria_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#get_criteria_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.get_criteria_info" title="Link to this definition"></a></dt>
+<dd><p>Get information about zombie detection criteria.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.get_killed_zombies">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">get_killed_zombies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">since_hours</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Query(24)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#get_killed_zombies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.get_killed_zombies" title="Link to this definition"></a></dt>
+<dd><p>Get zombies that were killed (resolved) in the specified time period.</p>
+<ul class="simple">
+<li><p><strong>since_hours</strong>: Hours to look back (1-168, default: 24)</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>since_hours</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.check_zombie_killed">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">check_zombie_killed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zombie_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#check_zombie_killed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.check_zombie_killed" title="Link to this definition"></a></dt>
+<dd><p>Check if a specific zombie was killed (resolved).</p>
+<ul class="simple">
+<li><p><strong>zombie_id</strong>: Dynatrace host ID to check</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>zombie_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.get_zombie_lifecycle">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">get_zombie_lifecycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zombie_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#get_zombie_lifecycle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.get_zombie_lifecycle" title="Link to this definition"></a></dt>
+<dd><p>Get the complete lifecycle information for a specific zombie.</p>
+<ul class="simple">
+<li><p><strong>zombie_id</strong>: Dynatrace host ID to get lifecycle for</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>zombie_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.get_tracking_stats">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">get_tracking_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#get_tracking_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.get_tracking_stats" title="Link to this definition"></a></dt>
+<dd><p>Get current zombie tracking statistics (new, persisting, killed).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.cleanup_zombie_data">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">cleanup_zombie_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">days_to_keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Query(30)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#cleanup_zombie_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.cleanup_zombie_data" title="Link to this definition"></a></dt>
+<dd><p>Clean up old zombie tracking data.</p>
+<ul class="simple">
+<li><p><strong>days_to_keep</strong>: Number of days of data to keep (1-365, default: 30)</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>days_to_keep</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="zombie_detector.api.rest.root">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">zombie_detector.api.rest.</span></span><span class="sig-name descname"><span class="pre">root</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/zombie_detector/api/rest.html#root"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zombie_detector.api.rest.root" title="Link to this definition"></a></dt>
+<dd><p>Root endpoint with API information.</p>
+</dd></dl>
+
+<section id="core-endpoints">
+<h2>Core Endpoints<a class="headerlink" href="#core-endpoints" title="Link to this heading"></a></h2>
+<section id="health-check">
+<h3>Health Check<a class="headerlink" href="#health-check" title="Link to this heading"></a></h3>
+</section>
+<section id="zombie-detection">
+<h3>Zombie Detection<a class="headerlink" href="#zombie-detection" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="configuration-endpoints">
+<h2>Configuration Endpoints<a class="headerlink" href="#configuration-endpoints" title="Link to this heading"></a></h2>
+<section id="default-states">
+<h3>Default States<a class="headerlink" href="#default-states" title="Link to this heading"></a></h3>
+</section>
+<section id="criteria-information">
+<h3>Criteria Information<a class="headerlink" href="#criteria-information" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="tracking-endpoints">
+<h2>Tracking Endpoints<a class="headerlink" href="#tracking-endpoints" title="Link to this heading"></a></h2>
+<section id="killed-zombies">
+<h3>Killed Zombies<a class="headerlink" href="#killed-zombies" title="Link to this heading"></a></h3>
+</section>
+<section id="zombie-lifecycle">
+<h3>Zombie Lifecycle<a class="headerlink" href="#zombie-lifecycle" title="Link to this heading"></a></h3>
+</section>
+<section id="tracking-statistics">
+<h3>Tracking Statistics<a class="headerlink" href="#tracking-statistics" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="utility-endpoints">
+<h2>Utility Endpoints<a class="headerlink" href="#utility-endpoints" title="Link to this heading"></a></h2>
+<section id="cleanup-data">
+<h3>Cleanup Data<a class="headerlink" href="#cleanup-data" title="Link to this heading"></a></h3>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../performance.html" class="btn btn-neutral float-right" title="Performance Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Dayron Fernandez Acosta.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
